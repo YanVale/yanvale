@@ -131,4 +131,65 @@ resource "azurerm_virtual_machine" "vm2" {
   }
 }
 
+resource "azurerm_cosmosdb_account" "local" {
+  name                = "cosmos-desafio-tf-local"
+  location            = azurerm_resource_group.local.location
+  resource_group_name = azurerm_resource_group.local.name
+  offer_type          = "Standard"
+  kind                = "MongoDB"
+
+  enable_automatic_failover = false
+
+  capabilities {
+    name = "EnableAggregationPipeline"
+  }
+
+  capabilities {
+    name = "EnableServerless"
+ }
+
+  capabilities {
+    name = "mongoEnableDocLevelTTL"
+  }
+
+  capabilities {
+    name = "EnableMongo"
+ }
+
+  capabilities {
+    name = "MongoDBv3.4"
+  }
+
+  consistency_policy {
+    consistency_level = "Session"
+  }
+
+
+
+  geo_location {
+    location = azurerm_resource_group.local.location
+    failover_priority = 0
+  }
+}
+
+
+resource "azurerm_cosmosdb_mongo_database" "local" {
+  name                = "monogodb-desafio"
+  resource_group_name = azurerm_cosmosdb_account.local.resource_group_name
+  account_name        = azurerm_cosmosdb_account.local.name
+}
+
+
+
+output "cosmosdb_connection_string" {
+    value = azurerm_cosmosdb_account.local.connection_strings
+    sensitive = true
+}
+
+
+output "cosmosdb_connection_primary_key" {
+    value = azurerm_cosmosdb_account.local.primary_key
+    sensitive = true
+}
+
 
