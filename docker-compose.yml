@@ -1,0 +1,15 @@
+version: '3'
+services:
+    Desafio:
+        build:
+            dockerfile: ./Dockerfile
+            context: .
+        image: yanvale/desafio
+        container_name: Desafio
+        ports:
+            - "8000:80"
+        volumes:
+            - desafio:/usr/src
+volumes: 
+    -desafio:
+  

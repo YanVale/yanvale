@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-service
+spec:
+  selector:
+    matchLabels:
+      app: demo-service
+  template:
+    metadata:
+      labels:
+        app: demo-service
+    spec:
+      containers:
+      - name: demo-service
+        image: yanvale/desafio
+        resources:
+          limits:
+            cpu: 20m
+            memory: 128Mi
+          requests:
+            cpu: 20m
+            memory: 128Mi
+        ports:
+        - containerPort: 8000
