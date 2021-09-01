@@ -4,7 +4,7 @@ required_version = ">= 0.12"
      storage_account_name   = "terraformst"
      container_name         = "terraformlocal"
      key                    = "key1"
-     access_key             = "M3THvDrNu9Gz738Xv7BcTxG4g9Ret4JLxYSgiQmrBEVnIsXIC16f6l2D200Qwl5LergpQkrOeJOIF1U2G8UNBQ=="
+     access_key             = "string"
 }
 } 
 provider "azurerm" {
