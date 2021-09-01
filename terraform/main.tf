@@ -59,7 +59,7 @@ resource "azurerm_virtual_machine" "vm1" {
   name                  = "vm1"
   location              = azurerm_resource_group.local.location
   resource_group_name   = azurerm_resource_group.local.name
-  network_interface_ids = [azurerm_network_interface.local.id]
+  network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_DS1_v2"
 
   
@@ -98,7 +98,7 @@ resource "azurerm_virtual_machine" "vm2" {
   name                  = "vm2"
   location              = azurerm_resource_group.local.location
   resource_group_name   = azurerm_resource_group.local.name
-  network_interface_ids = [azurerm_network_interface.local.id]
+  network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_DS1_v2"
 
   
